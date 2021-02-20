@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function fun() {
+            str = document.getElementById("string").value;
+            output = document.getElementById("output")
+            s = ""
+            if (/\d/.test(str)) {
+                s = "ENTER STRING WITHOUT NUMBERS "
+                output.innerHTML = s
+            } else {
+                s = ""
+                setTimeout(() => {
+                    s = s + "<br>" + "length : " + str.length
+                    output.innerHTML = s
+                    setTimeout(() => {
+                        s = s + "<br>" + "uppercase : " + str.toUpperCase()
+                        output.innerHTML = s
+                        setTimeout(() => {
+                            s = s + "<br>" + "lowercase : " + str.toLowerCase()
+                            str = str.toLowerCase()
+                            output.innerHTML = s
+                            setTimeout(() => {
+                                v = ['a', 'e', 'i', 'o', 'u']
+                                vowels = ""
+                                consonants = ""
+                                for (var c of str) {
+                                    if (v.includes(c)) {
+                                        vowels = vowels + " " + c
+                                    } else {
+                                        consonants = consonants + " " + c
+                                    }
+
+                                }
+                                s = s + "<br>" + "vowels : " + vowels + "<br>" + "consonats : " + consonants
+                                output.innerHTML = s
+                            }, 1000);
+                        }, 1000)
+                    }, 1000)
+                }, 1000)
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form onsubmit="return false">
+        <label>Enter String </label>
+        <input type="text" id="string">
+        <br><br>
+        <input type="submit" onclick="fun()" />
+        <br><br>
+        <label id="output"></label>
+    </form>
+</body>
+
+</html>
