@@ -20,8 +20,8 @@ import org.w3c.dom.Element;
  public class ValidLicense {
 
     public static void main(String[] args)throws Exception {
-            File inputXML1 = new File("license1.xml");
-            File inputXML2 = new File("license2.xml");
+            File inputXML1 = new File("file1.xml");
+            File inputXML2 = new File("file2.xml");
            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document document1 = dBuilder.parse(inputXML1);

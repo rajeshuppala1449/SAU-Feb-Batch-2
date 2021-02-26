@@ -63,8 +63,8 @@ public class ExpiredLicense {
         try {
 
             // INPUT FILE
-            File input1 = new File("license1.xml");
-            File input2 = new File("license2.xml");
+            File input1 = new File("file1.xml");
+            File input2 = new File("file2.xml");
    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc1 = dBuilder.parse(input1);

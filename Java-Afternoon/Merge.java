@@ -20,8 +20,8 @@ public class Merge {
  
     public static void main(String[] args)throws Exception {
         try{
-         File input1 = new File("license1.xml");
-            File input2 = new File("license2.xml");
+         File input1 = new File("file1.xml");
+            File input2 = new File("file2.xml");
   
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
