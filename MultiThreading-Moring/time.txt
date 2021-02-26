@@ -1,0 +1,3 @@
+NoThread 0.13 sec
+SingleThread 0.12 sec
+MultipleThread 0.14 sec
