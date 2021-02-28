@@ -1,0 +1,72 @@
+<div style="display: flex;float: left;">
+    <div style="margin-left: 10%;">
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+            <label>
+                First Name:
+                <input type="text" formControlName="firstName" required>
+            </label>
+
+            <label>
+                Last Name:
+                <input type="text" formControlName="lastName">
+            </label>
+
+            <label>
+                Contact No:
+                <input type="text" formControlName="contact">
+            </label>
+
+            <label>
+                DOB:
+                <input type="date" formControlName="dob">
+            </label>
+
+            <label>
+                city:
+                <input type="text" formControlName="city">
+            </label>
+
+            <label>
+                pincode:
+                <input type="text" formControlName="pincode">
+            </label>
+
+            <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+        </form>
+    </div>
+    <div style="margin-left: 20%;">
+        <form [formGroup]="deleteName" (ngSubmit)="delete()">
+            <label>
+                Deletion:
+                <input type="text" placeholder="enter firstname" formControlName="firstName">
+            </label>
+
+            <button type="submit" [disabled]="!deleteName.valid">Submit</button>
+        </form>
+
+    </div>
+
+    <div style="margin-left:20% ;" *ngIf="list.length > 0">
+        <table>
+            <tr>
+                <th><button (click)="sort('firstName')">firstName</button></th>
+                <th><button (click)="sort('lastName')">lastName</button></th>
+                <th><button (click)="sort('contact')">contact</button></th>
+                <th><button (click)="sort('dob')">DOB</button></th>
+                <th><button (click)="sort('city')">city</button></th>
+                <th><button (click)="sort('pincode')">pincode</button></th>
+            </tr>
+            <tr *ngFor="let obj of list">
+
+                <td>{{obj.firstName}}</td>
+                <td>{{obj.lastName}}</td>
+                <td>{{obj.contact}}</td>
+                <td>{{obj.dob | date}}</td>
+                <td>{{obj.city}}</td>
+                <td>{{obj.pincode}}</td>
+
+            </tr>
+        </table>
+
+    </div>
+</div>
