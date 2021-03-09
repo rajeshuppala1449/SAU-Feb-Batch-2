@@ -1,0 +1,5 @@
+package com.au.ordermgmt.dao;
+
+public class SampleDao {
+
+}

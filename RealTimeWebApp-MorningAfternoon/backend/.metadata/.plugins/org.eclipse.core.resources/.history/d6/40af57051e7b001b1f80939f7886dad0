@@ -1,0 +1,5 @@
+package com.au.ordermgt.config;
+
+public class WebServletConfig {
+
+}

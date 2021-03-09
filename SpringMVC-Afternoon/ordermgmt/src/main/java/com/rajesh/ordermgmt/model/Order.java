@@ -1,35 +1,93 @@
 package com.rajesh.ordermgmt.model;
 
-public class Order {
-	
-	private int id;
-	private String item;
-	private int quantity;
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public String getItem() {
-		return item;
-	}
-	public void setItem(String item) {
-		this.item = item;
-	}
-	public int getQuantity() {
-		return quantity;
-	}
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-	
-	
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", item=" + item + ", quantity=" + quantity + "]";
-	}
-	
+import java.util.*;
 
+
+public class Order {
+    private int id;
+    private long totalOrderCost, customerPhone;
+    private String customerName, deliveryAddress;
+    private HashMap<Integer, OrderItem> itemsList = new HashMap<>();
+
+    public boolean addItem(OrderItem item){
+        item.setTotalCost(item.getUnits() * item.getItem().getCost());
+        itemsList.put(item.getId(), item);
+        this.totalOrderCost += item.getTotalCost();
+        return true;
+    }
+
+    public boolean isValid(){
+        if(this.customerName != null && this.customerName != "" &&
+                String.valueOf(this.customerPhone).length() == 10 &&
+                this.deliveryAddress != null && this.deliveryAddress != ""){
+            return true;
+        }
+        return false;
+    }
+
+    public List<OrderItem> getItemsList() {
+        List<OrderItem> items = new ArrayList<>();
+        for(Map.Entry<Integer, OrderItem> entry : itemsList.entrySet()){
+            items.add(entry.getValue());
+        }
+        return items;
+    }
+
+    public boolean removeItem(int itemId){
+        if(itemsList.containsKey(itemId)){
+            this.totalOrderCost -= itemsList.get(itemId).getTotalCost();
+            itemsList.remove(itemId);
+            return true;
+        }
+        return false;
+    }
+
+    public OrderItem updateOrderItem(int itemId, OrderItem item){
+        if(itemsList.containsKey(itemId)) {
+            this.totalOrderCost -= itemsList.get(itemId).getTotalCost();
+            int id = itemsList.get(itemId).getId();
+            item.setId(id);
+            item.setTotalCost(item.getUnits() * item.getItem().getCost());
+            itemsList.put(itemId, item);
+            this.totalOrderCost += item.getTotalCost();
+            return item;
+        }
+        return null;
+    }
+
+    public long getTotalOrderCost() {
+        return totalOrderCost;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getcustomerPhone() {
+        return customerPhone;
+    }
+
+    public void setcustomerPhone(long customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public void setDeliveryAddress(String deliveryAddress) {
+        this.deliveryAddress = deliveryAddress;
+    }
 }

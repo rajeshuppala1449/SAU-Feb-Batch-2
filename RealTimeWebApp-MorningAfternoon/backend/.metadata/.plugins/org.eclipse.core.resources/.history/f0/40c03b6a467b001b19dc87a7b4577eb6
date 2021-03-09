@@ -1,0 +1,12 @@
+package com.au.ordermgmt.dao;
+
+@Repository
+public class SampleDao {
+	
+	@AutoWired
+	JdbcTemplate jdbcTemplate;
+	
+	public String getProducerName(Integer id) {
+		return jdbcTemplate.queryForObject("select product_name from products where id=?",String,class,id);
+	}
+}

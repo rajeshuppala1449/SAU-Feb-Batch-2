@@ -1,0 +1,5 @@
+package com.au.ordermgmt.model;
+
+public class Payment {
+
+}

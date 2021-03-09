@@ -1,0 +1,17 @@
+package com.au.ordermgmt.controllers;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.au.ordermgmt.dao.SampleDao;
+
+@RestController
+public class SampleController {
+
+	
+	@GetMapping(value="/hello")
+	public String hello() {
+		return SampleDao.getProductName(1);
+	}
+	
+}
